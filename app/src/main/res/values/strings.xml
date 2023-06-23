@@ -5,6 +5,7 @@
     <string name="empty_content">No Tasks Found</string>
     <string name="back_arrow">Back Arrow</string>
     <string name="no_storage_icon">No Storage Icon</string>
+    <string name="drop_down_arrow_icon">Drop-Down Arrow Icon</string>
     <string name="search_icon">Search Icon</string>
     <string name="close_icon">Close Icon</string>
     <string name="delete_icon">Delete Icon</string>
