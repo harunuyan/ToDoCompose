@@ -7,6 +7,8 @@
     <string name="no_storage_icon">No Storage Icon</string>
     <string name="search_icon">Search Icon</string>
     <string name="close_icon">Close Icon</string>
+    <string name="delete_icon">Delete Icon</string>
+    <string name="update_icon">Update Icon</string>
     <string name="search_placeholder">Search</string>
     <string name="list_screen_title">Tasks</string>
     <string name="add_Button">Add Button</string>
