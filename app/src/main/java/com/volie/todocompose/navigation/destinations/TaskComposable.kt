@@ -1,17 +1,21 @@
 package com.volie.todocompose.navigation.destinations
 
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.volie.todocompose.ui.screens.task.TaskScreen
+import com.volie.todocompose.ui.viewmodels.SharedViewModel
 import com.volie.todocompose.util.Action
 import com.volie.todocompose.util.Constants.TASK_ARGUMENT_KEY
 import com.volie.todocompose.util.Constants.TASK_SCREEN
 
 @ExperimentalMaterial3Api
 fun NavGraphBuilder.taskComposable(
+    sharedViewModel: SharedViewModel,
     navigateToListScreen: (Action) -> Unit
 ) {
     composable(
@@ -20,7 +24,13 @@ fun NavGraphBuilder.taskComposable(
             type = NavType.IntType
         })
     ) { navBackStackEntry ->
-        navBackStackEntry.arguments!!.getInt(TASK_ARGUMENT_KEY)
-        TaskScreen(navigateToListScreen = navigateToListScreen)
+        val taskId = navBackStackEntry.arguments!!.getInt(TASK_ARGUMENT_KEY)
+        sharedViewModel.getSelectedTask(taskId)
+        val selectedTask by sharedViewModel.selectedTask.collectAsState()
+
+        TaskScreen(
+            selectedTask = selectedTask,
+            navigateToListScreen = navigateToListScreen
+        )
     }
 }
