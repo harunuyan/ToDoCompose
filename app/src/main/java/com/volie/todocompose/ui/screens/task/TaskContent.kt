@@ -66,7 +66,7 @@ fun TaskContent(
 }
 
 @Composable
-@Preview
+@Preview(showSystemUi = true)
 private fun TaskContentPreview() {
     TaskContent(
         title = "",
