@@ -28,17 +28,20 @@ import com.volie.todocompose.ui.theme.TASK_ITEM_ELEVATION
 import com.volie.todocompose.ui.theme.Typography
 import com.volie.todocompose.ui.theme.taskItemBackgroundColor
 import com.volie.todocompose.ui.theme.taskItemTextColor
+import com.volie.todocompose.util.RequestState
 
 @ExperimentalMaterialApi
 @Composable
 fun ListContent(
-    tasks: List<ToDoTask>,
+    tasks: RequestState<List<ToDoTask>>,
     navigateToTaskScreen: (taskId: Int) -> Unit
 ) {
-    if (tasks.isEmpty()) {
-        EmptyContent()
-    } else {
-        DisplayTasks(tasks = tasks, navigateToTaskScreen = navigateToTaskScreen)
+    if (tasks is RequestState.Success) {
+        if (tasks.data.isEmpty()) {
+            EmptyContent()
+        } else {
+            DisplayTasks(tasks = tasks.data, navigateToTaskScreen = navigateToTaskScreen)
+        }
     }
 }
 
