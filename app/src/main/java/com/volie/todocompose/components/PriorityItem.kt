@@ -23,7 +23,7 @@ fun PriorityItem(priority: Priority) {
         Text(
             modifier = Modifier.padding(start = LARGE_PADDING),
             text = priority.name,
-            style = Typography.titleSmall,
+            style = Typography.labelSmall,
             color = androidx.compose.material3.MaterialTheme.colorScheme.onSurface
         )
     }
