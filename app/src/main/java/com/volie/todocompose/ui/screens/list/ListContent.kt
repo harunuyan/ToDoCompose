@@ -36,22 +36,45 @@ import com.volie.todocompose.util.SearchAppBarState
 fun ListContent(
     allTasks: RequestState<List<ToDoTask>>,
     searchedTask: RequestState<List<ToDoTask>>,
+    lowPriorityTasks: List<ToDoTask>,
+    highPriorityTasks: List<ToDoTask>,
+    sortState: RequestState<Priority>,
     searchAppBarState: SearchAppBarState,
     navigateToTaskScreen: (taskId: Int) -> Unit
 ) {
-    if (searchAppBarState == SearchAppBarState.TRIGGERED) {
-        if (searchedTask is RequestState.Success) {
-            HandleListContent(
-                tasks = searchedTask.data,
-                navigateToTaskScreen = navigateToTaskScreen
-            )
-        }
-    } else {
-        if (allTasks is RequestState.Success) {
-            HandleListContent(
-                tasks = allTasks.data,
-                navigateToTaskScreen = navigateToTaskScreen
-            )
+    if (sortState is RequestState.Success) {
+        when {
+            searchAppBarState == SearchAppBarState.TRIGGERED -> {
+                if (searchedTask is RequestState.Success) {
+                    HandleListContent(
+                        tasks = searchedTask.data,
+                        navigateToTaskScreen = navigateToTaskScreen
+                    )
+                }
+            }
+
+            sortState.data == Priority.NONE -> {
+                if (allTasks is RequestState.Success) {
+                    HandleListContent(
+                        tasks = allTasks.data,
+                        navigateToTaskScreen = navigateToTaskScreen
+                    )
+                }
+            }
+
+            sortState.data == Priority.LOW -> {
+                HandleListContent(
+                    tasks = lowPriorityTasks,
+                    navigateToTaskScreen = navigateToTaskScreen
+                )
+            }
+
+            sortState.data == Priority.HIGH -> {
+                HandleListContent(
+                    tasks = highPriorityTasks,
+                    navigateToTaskScreen = navigateToTaskScreen
+                )
+            }
         }
     }
 }
@@ -65,7 +88,10 @@ fun HandleListContent(
     if (tasks.isEmpty()) {
         EmptyContent()
     } else {
-        DisplayTasks(tasks = tasks, navigateToTaskScreen = navigateToTaskScreen)
+        DisplayTasks(
+            tasks = tasks,
+            navigateToTaskScreen = navigateToTaskScreen
+        )
     }
 }
 
