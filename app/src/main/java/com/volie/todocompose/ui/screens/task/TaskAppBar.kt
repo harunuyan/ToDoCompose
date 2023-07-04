@@ -2,7 +2,6 @@ package com.volie.todocompose.ui.screens.task
 
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
@@ -10,6 +9,7 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -52,10 +52,10 @@ fun NewTaskAppBar(
         title = {
             Text(
                 text = stringResource(id = R.string.add_task),
-                color = MaterialTheme.colors.topAppBarContentColor
+                color = MaterialTheme.colorScheme.topAppBarContentColor
             )
         },
-        backgroundColor = MaterialTheme.colors.topAppBarBackgroundColor,
+        backgroundColor = MaterialTheme.colorScheme.topAppBarBackgroundColor,
         actions = {
             AddAction(onAddClicked = navigateToListScreen)
         }
@@ -70,7 +70,7 @@ fun BackAction(
         Icon(
             imageVector = Icons.Filled.ArrowBack,
             contentDescription = stringResource(id = R.string.back_arrow),
-            tint = MaterialTheme.colors.topAppBarContentColor
+            tint = MaterialTheme.colorScheme.topAppBarContentColor
         )
     }
 }
@@ -83,7 +83,7 @@ fun AddAction(
         Icon(
             imageVector = Icons.Filled.Check,
             contentDescription = stringResource(id = R.string.add_task),
-            tint = MaterialTheme.colors.topAppBarContentColor
+            tint = MaterialTheme.colorScheme.topAppBarContentColor
         )
     }
 }
@@ -100,12 +100,12 @@ fun ExistingTaskAppBar(
         title = {
             Text(
                 text = selectedTask.title,
-                color = MaterialTheme.colors.topAppBarContentColor,
+                color = MaterialTheme.colorScheme.topAppBarContentColor,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
         },
-        backgroundColor = MaterialTheme.colors.topAppBarBackgroundColor,
+        backgroundColor = MaterialTheme.colorScheme.topAppBarBackgroundColor,
         actions = {
             ExistingTaskAppBarActions(
                 selectedTask = selectedTask,
@@ -123,7 +123,7 @@ fun CloseAction(
         Icon(
             imageVector = Icons.Filled.Close,
             contentDescription = stringResource(id = R.string.close_icon),
-            tint = MaterialTheme.colors.topAppBarContentColor
+            tint = MaterialTheme.colorScheme.topAppBarContentColor
         )
     }
 }
@@ -163,7 +163,7 @@ fun DeleteAction(
         Icon(
             imageVector = Icons.Filled.Delete,
             contentDescription = stringResource(id = R.string.delete_icon),
-            tint = MaterialTheme.colors.topAppBarContentColor
+            tint = MaterialTheme.colorScheme.topAppBarContentColor
         )
     }
 }
@@ -176,7 +176,7 @@ fun UpdateAction(
         Icon(
             imageVector = Icons.Filled.Check,
             contentDescription = stringResource(id = R.string.update_icon),
-            tint = MaterialTheme.colors.topAppBarContentColor
+            tint = MaterialTheme.colorScheme.topAppBarContentColor
         )
     }
 }

@@ -11,7 +11,6 @@ import androidx.compose.material.DropdownMenu
 import androidx.compose.material.DropdownMenuItem
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
@@ -20,6 +19,7 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -39,7 +39,6 @@ import com.volie.todocompose.components.PriorityItem
 import com.volie.todocompose.data.models.Priority
 import com.volie.todocompose.ui.theme.LARGE_PADDING
 import com.volie.todocompose.ui.theme.TOP_APP_BAR_HEIGHT
-import com.volie.todocompose.ui.theme.Typography
 import com.volie.todocompose.ui.theme.topAppBarBackgroundColor
 import com.volie.todocompose.ui.theme.topAppBarContentColor
 import com.volie.todocompose.ui.viewmodels.SharedViewModel
@@ -94,7 +93,7 @@ fun DefaultListAppBar(
     TopAppBar(title = {
         Text(
             text = stringResource(id = R.string.list_screen_title),
-            color = MaterialTheme.colors.topAppBarContentColor
+            color = MaterialTheme.colorScheme.topAppBarContentColor
         )
     }, actions = {
         ListAppBarActions(
@@ -102,7 +101,7 @@ fun DefaultListAppBar(
             onSortClicked = onSortClicked,
             onDeleteAllConfirmed = onDeleteAllConfirmed
         )
-    }, backgroundColor = MaterialTheme.colors.topAppBarBackgroundColor
+    }, backgroundColor = MaterialTheme.colorScheme.topAppBarBackgroundColor
     )
 }
 
@@ -137,7 +136,7 @@ fun SearchAction(
         Icon(
             imageVector = Icons.Filled.Search,
             contentDescription = stringResource(id = R.string.search_action),
-            tint = MaterialTheme.colors.topAppBarContentColor
+            tint = MaterialTheme.colorScheme.topAppBarContentColor
         )
     }
 }
@@ -155,7 +154,8 @@ fun SortAction(
             painter = painterResource(id = R.drawable.ic_filter_list),
             contentDescription = stringResource(
                 id = R.string.sort_action
-            )
+            ),
+            tint = MaterialTheme.colorScheme.topAppBarContentColor
         )
         DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
             DropdownMenuItem(onClick = {
@@ -193,7 +193,8 @@ fun DeleteAllAction(
     }) {
         Icon(
             painter = painterResource(id = R.drawable.ic_vertical_menu),
-            contentDescription = stringResource(id = R.string.delete_all_action)
+            contentDescription = stringResource(id = R.string.delete_all_action),
+            tint = MaterialTheme.colorScheme.topAppBarContentColor
         )
         DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
             DropdownMenuItem(onClick = {
@@ -203,7 +204,7 @@ fun DeleteAllAction(
                 Text(
                     modifier = Modifier.padding(start = LARGE_PADDING),
                     text = stringResource(id = R.string.delete_all_action),
-                    style = Typography.titleSmall
+                    style = androidx.compose.material.MaterialTheme.typography.subtitle2
                 )
             }
         }
@@ -226,7 +227,7 @@ fun SearchAppBar(
             .fillMaxWidth()
             .height(height = TOP_APP_BAR_HEIGHT),
         elevation = AppBarDefaults.TopAppBarElevation,
-        color = MaterialTheme.colors.topAppBarBackgroundColor
+        color = MaterialTheme.colorScheme.topAppBarBackgroundColor
     ) {
         TextField(modifier = Modifier.fillMaxWidth(),
             value = text,
@@ -239,8 +240,8 @@ fun SearchAppBar(
                     color = Color.White
                 )
             }, textStyle = TextStyle(
-                color = MaterialTheme.colors.topAppBarContentColor,
-                fontSize = androidx.compose.material3.MaterialTheme.typography.titleSmall.fontSize
+                color = MaterialTheme.colorScheme.topAppBarContentColor,
+                fontSize = androidx.compose.material.MaterialTheme.typography.subtitle1.fontSize
             ),
             singleLine = true,
             leadingIcon = {
@@ -250,7 +251,7 @@ fun SearchAppBar(
                     Icon(
                         imageVector = Icons.Filled.Search,
                         contentDescription = stringResource(id = R.string.search_icon),
-                        tint = MaterialTheme.colors.topAppBarContentColor
+                        tint = MaterialTheme.colorScheme.topAppBarContentColor
                     )
                 }
             },
@@ -275,7 +276,7 @@ fun SearchAppBar(
                     Icon(
                         imageVector = Icons.Filled.Close,
                         contentDescription = stringResource(id = R.string.close_icon),
-                        tint = MaterialTheme.colors.topAppBarContentColor
+                        tint = MaterialTheme.colorScheme.topAppBarContentColor
                     )
                 }
             },
@@ -288,7 +289,7 @@ fun SearchAppBar(
                 }
             ),
             colors = TextFieldDefaults.textFieldColors(
-                cursorColor = MaterialTheme.colors.topAppBarContentColor,
+                cursorColor = MaterialTheme.colorScheme.topAppBarContentColor,
                 focusedIndicatorColor = Color.Transparent,
                 disabledIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,

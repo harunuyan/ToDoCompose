@@ -35,6 +35,7 @@ import com.volie.todocompose.R
 import com.volie.todocompose.data.models.Priority
 import com.volie.todocompose.ui.theme.PRIORITY_DROPDOWN_HEIGHT
 import com.volie.todocompose.ui.theme.PRIORITY_INDICATOR_SIZE
+import com.volie.todocompose.ui.theme.taskItemTextColor
 
 @Composable
 fun PriorityDropDown(
@@ -74,6 +75,7 @@ fun PriorityDropDown(
             modifier = Modifier
                 .padding(start = 5.dp)
                 .weight(weight = 8f),
+            color = MaterialTheme.colorScheme.taskItemTextColor,
             text = priority.name,
             style = androidx.compose.material.MaterialTheme.typography.subtitle2
         )

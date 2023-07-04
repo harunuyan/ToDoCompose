@@ -1,6 +1,7 @@
 package com.volie.todocompose.ui.theme
 
-import androidx.compose.material.Colors
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.ColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
@@ -24,22 +25,26 @@ val MediumPriorityColor = Color(0xFFFFC114)
 val HighPriorityColor = Color(0XFFFF4646)
 val NonePriorityColor = MediumGray
 
-val Colors.taskItemTextColor: Color
+val ColorScheme.splashScreenBackground: Color
     @Composable
-    get() = if (isLight) DarkGray else LightGray
+    get() = if (isSystemInDarkTheme()) Color.Black else Purple700
 
-val Colors.taskItemBackgroundColor: Color
+val ColorScheme.taskItemTextColor: Color
     @Composable
-    get() = if (isLight) Color.White else DarkGray
+    get() = if (isSystemInDarkTheme()) Color.White else DarkGray
 
-val Colors.fabBackgroundColor: Color
+val ColorScheme.taskItemBackgroundColor: Color
     @Composable
-    get() = if (isLight) Teal200 else Purple700
+    get() = if (isSystemInDarkTheme()) DarkGray else Color.White
 
-val Colors.topAppBarContentColor: Color
+val ColorScheme.fabBackgroundColor: Color
     @Composable
-    get() = if (isLight) Color.White else LightGray
+    get() = if (isSystemInDarkTheme()) Purple700 else Teal200
 
-val Colors.topAppBarBackgroundColor: Color
+val ColorScheme.topAppBarContentColor: Color
     @Composable
-    get() = if (isLight) Purple500 else Color.Black
+    get() = if (isSystemInDarkTheme()) LightGray else Color.White
+
+val ColorScheme.topAppBarBackgroundColor: Color
+    @Composable
+    get() = if (isSystemInDarkTheme()) Color.Black else Purple500

@@ -6,8 +6,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,7 +24,7 @@ fun EmptyContent() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colors.background),
+            .background(MaterialTheme.colorScheme.background),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -38,7 +38,7 @@ fun EmptyContent() {
             text = stringResource(id = R.string.empty_content),
             color = MediumGray,
             fontWeight = FontWeight.Bold,
-            fontSize = androidx.compose.material3.MaterialTheme.typography.headlineSmall.fontSize
+            fontSize = androidx.compose.material.MaterialTheme.typography.h6.fontSize
         )
     }
 }

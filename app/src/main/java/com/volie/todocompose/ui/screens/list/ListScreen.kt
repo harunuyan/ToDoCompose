@@ -4,13 +4,13 @@ import android.annotation.SuppressLint
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.ScaffoldState
 import androidx.compose.material.SnackbarResult
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.rememberScaffoldState
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -98,7 +98,7 @@ fun ListFab(
         onClick = {
             onFabClicked(-1)
         },
-        backgroundColor = MaterialTheme.colors.fabBackgroundColor
+        backgroundColor = MaterialTheme.colorScheme.fabBackgroundColor
     ) {
         Icon(
             imageVector = Icons.Filled.Add,

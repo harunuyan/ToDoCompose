@@ -1,5 +1,6 @@
 package com.volie.todocompose.ui.screens.task
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,6 +20,7 @@ import com.volie.todocompose.components.PriorityDropDown
 import com.volie.todocompose.data.models.Priority
 import com.volie.todocompose.ui.theme.LARGE_PADDING
 import com.volie.todocompose.ui.theme.MEDIUM_PADDING
+import com.volie.todocompose.ui.theme.taskItemTextColor
 
 @Composable
 fun TaskContent(
@@ -39,11 +41,17 @@ fun TaskContent(
             modifier = Modifier.fillMaxWidth(),
             value = title,
             onValueChange = { onTitleChange(it) },
-            label = { Text(text = stringResource(id = R.string.title)) },
-            textStyle = MaterialTheme.typography.bodyMedium,
+            label = {
+                Text(
+                    text = stringResource(id = R.string.title),
+                    color = MaterialTheme.colorScheme.taskItemTextColor
+                )
+            },
+            textStyle = androidx.compose.material.MaterialTheme.typography.body1.copy(
+                color = MaterialTheme.colorScheme.taskItemTextColor
+            ),
             singleLine = true,
-
-            )
+        )
 
         Divider(
             modifier = Modifier.height(MEDIUM_PADDING),
@@ -59,14 +67,22 @@ fun TaskContent(
             modifier = Modifier.fillMaxSize(),
             value = description,
             onValueChange = { onDescriptionChange(it) },
-            label = { Text(text = stringResource(id = R.string.description)) },
-            textStyle = MaterialTheme.typography.bodyMedium
+            label = {
+                Text(
+                    text = stringResource(id = R.string.description),
+                    color = MaterialTheme.colorScheme.taskItemTextColor
+                )
+            },
+            textStyle = androidx.compose.material.MaterialTheme.typography.body1.copy(
+                color = MaterialTheme.colorScheme.taskItemTextColor
+            )
         )
     }
 }
 
 @Composable
 @Preview(showSystemUi = true)
+@Preview(uiMode = UI_MODE_NIGHT_YES)
 private fun TaskContentPreview() {
     TaskContent(
         title = "",
